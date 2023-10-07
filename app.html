@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>To Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: lightpink;
+            background-image: url('unicornstickers.png'); /* Specify the path to your image */
+            background-size: cover; 
+            background-repeat: no-repeat;
+            display: grid;
+            justify-items: center;
+
+           }
+           
+        .todo-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr;
+            gap: 10px;
+            }
+
+        .add-item {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr;
+            gap: 10px;
+            padding-bottom: 30px;
+            
+        }
+
+        .name-input {
+            height: 30px;
+            border: 2px solid lightblue;
+            background-color: skyblue 10;
+            border-radius: 5px;
+            
+        }
+
+        .date-input {
+            font-family: 'Gochi Hand', cursive;
+            font-size: 20px;
+            border: 2px solid lightblue;
+            background-color: skyblue 10;
+            border-radius: 5px;
+        }
+
+        .add-button {
+            font-family: 'Gochi Hand', cursive;
+            font-size: 20px;
+            border-radius: 5px;
+            border: 2px solid lightblue;
+            background-color: skyblue 10;
+            border-radius: 5px;
+        }
+
+        .app-grid {
+            display: grid;
+            max-width: 1000px;
+            background-color: rgb(255, 195, 200);
+            border: 5px solid lightblue;
+            border-radius: 20px;
+            margin: 30px;
+            padding: 30px;
+        }
+
+        .hand {
+            font-family: 'Gochi Hand', cursive;
+            font-size: 20px;
+        }
+        
+        .delete-item-button {
+            border-radius: 5px;
+            border: 2px solid lightblue;
+            background-color: skyblue 10;
+            border-radius: 5px;
+        }
+        
+        .title {
+            font-family: 'Gochi Hand', cursive;
+            font-size: 30px;
+        }
+
+        .reset-label {
+            margin-top: 70px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'Gochi Hand', cursive;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .reset-button {
+            height: 100px;
+            width: 100px;
+            border-radius: 100px;
+            border: 2px solid lightblue;
+            align-self: center;
+
+        }
+
+        .reset-button-box{
+            display: flex;
+            justify-self: center;
+        }
+
+        .reset-button img {
+            padding-top: 1px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .reset-overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999; /* Ensure it's above other elements */
+            pointer-events: auto; /* Enable interactions with the overlay */
+        }
+        
+        .reset-overlay img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+        button:hover{
+            background-color: rgb(157, 213, 235); /* Change the background color */
+            transition: background-color 0.2s; /* Add a smooth transition */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="app-grid">
+        
+        <h2 class="title">Todo List 🦄📃</h2>
+
+        <div class="add-item">
+        <input placeholder="Add something Todo! :)"
+        class="js-name-input name-input">
+
+        <input type="date" class="js-due-date-input date-input">
+
+        <button onclick="addTodo()"
+        class="add-button clicked"> Add </button>
+        </div>
+
+
+
+        <div class="js-todo-list todo-grid"></div>
+        
+        <div class="reset-overlay">
+            <audio id="resetSound" controls style="display: none">
+                <source src="distant-explosion.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <img src="n1.webp" alt="Reset Image">
+        </div>
+
+        <div class="reset-label">Reset Todo list:</div>
+        
+        <div class="reset-button-box">
+        <button class="reset-button clicked" onclick="resetTodoList()"><img src="nuclearoption.png" alt="Reset Button"></button>
+        </div>
+        
+    </div>
+
+
+
+<script src="app.js"></script>
+</body>
+</html>
